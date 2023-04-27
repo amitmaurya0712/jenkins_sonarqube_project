@@ -9,6 +9,7 @@ pipeline{
 
         stage('Build'){
             steps{
+                sh 'sudo chmod -R ug+w .'
                 sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
             }
         }
