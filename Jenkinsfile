@@ -13,13 +13,13 @@ pipeline{
             }
         }
 
-    //     stage("Sonar-Qube"){
-    //         steps{
-    //             withSonarQubeEnv('sonarqube-server') {
-    //             sh 'mvn clean package sonar:sonar'
-    //             }
-    //         }
-    //    }
+        stage("Sonar-Qube"){
+            steps{
+                withSonarQubeEnv('sonarqube-server') {
+                sh 'mvn sonar:sonar'
+                }
+            }
+       }
     }
 
 }
