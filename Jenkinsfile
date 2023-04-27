@@ -7,16 +7,11 @@ pipeline{
             }
         }
 
-        // stage('Build'){
-        //     steps{
-        //         sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
-        //     }
-        // }
-
         stage("Sonar-Qube"){
             steps{
-                withSonarQubeEnv('sonarqube-server') {
-                sh 'mvn sonar:sonar'
+                def scannerHome = tool 'SonarScanner 4.8.0';
+                withSonarQubeEnv('sonarqube-server') { 
+                sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
        }
