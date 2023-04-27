@@ -1,16 +1,19 @@
 pipeline{
-    agent {
-        docker {
-            image "maven"
-        }
-    }
+    agent any
     stages{
-        // stage('Build'){
-        //     steps{
-        //         sh 'sudo chmod -R ug+w .'
-        //         sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
-        //     }
-        // }
+        stage("SCM Checkout"){
+            steps{
+                git branch: 'main', credentialsId: '2f7e6287-0597-44f3-96ee-7118f14d623c', url: 'https://github.com/amitmaurya0712/jenkins_sonarqube_project.git'
+            }
+        }
+
+            stage('Maven Build'){
+                steps{
+                    def mavenHome = tool name: "Maven-3.8.6", type: "maven"
+                    def mavenCMD = "${mavenHome}/bin/mvn"
+                    sh "${mavenCMD} clean package"
+                }
+    }
 
         stage("Sonar-Qube"){
             steps{
