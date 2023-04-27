@@ -7,21 +7,19 @@ pipeline{
             }
         }
 
-            stage('Maven Build'){
-                steps{
-                    def mavenHome = tool name: "Maven-3.8.6", type: "maven"
-                    def mavenCMD = "${mavenHome}/bin/mvn"
-                    sh "${mavenCMD} clean package"
-                }
-    }
-
-        stage("Sonar-Qube"){
+        stage('Build'){
             steps{
-                withSonarQubeEnv('sonarqube-server') {
-                sh 'mvn sonar:sonar'
-                }
+                sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
             }
-       }
+        }
+
+    //     stage("Sonar-Qube"){
+    //         steps{
+    //             withSonarQubeEnv('sonarqube-server') {
+    //             sh 'mvn sonar:sonar'
+    //             }
+    //         }
+    //    }
     }
 
 }
