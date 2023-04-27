@@ -9,7 +9,7 @@ pipeline{
 
         stage('Build'){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn clean package -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
             }
         }
 
