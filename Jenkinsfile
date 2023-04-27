@@ -9,8 +9,9 @@ pipeline{
 
         stage("Sonar-Qube"){
             steps{
-                withSonarQubeEnv('sonarqube-server') 
+                withSonarQubeEnv('sonarqube-server') {
                 sh 'mvn clean package sonar:sonar'
+                }
             }
     }   }
 }
