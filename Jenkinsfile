@@ -7,11 +7,11 @@ pipeline{
             }
         }
 
-        // stage('Build'){
-        //     steps{
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
 
         stage("Sonar-Qube"){
             steps{
