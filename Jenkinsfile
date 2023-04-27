@@ -7,19 +7,19 @@ pipeline{
             }
         }
 
-        stage('Build'){
-            steps{
-                sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
-            }
-        }
+        // stage('Build'){
+        //     steps{
+        //         sh 'mvn clean install -f /var/lib/jenkins/workspace/Sonar_Pipeline/code/pom.xml'
+        //     }
+        // }
 
-    //     stage("Sonar-Qube"){
-    //         steps{
-    //             withSonarQubeEnv('sonarqube-server') {
-    //             sh 'mvn sonar:sonar'
-    //             }
-    //         }
-    //    }
+        stage("Sonar-Qube"){
+            steps{
+                withSonarQubeEnv('sonarqube-server') {
+                sh 'mvn sonar:sonar'
+                }
+            }
+       }
     }
 
 }
