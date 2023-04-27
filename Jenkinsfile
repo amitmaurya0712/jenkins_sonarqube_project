@@ -6,5 +6,11 @@ pipeline{
                 git branch: 'main', credentialsId: '2f7e6287-0597-44f3-96ee-7118f14d623c', url: 'https://github.com/amitmaurya0712/jenkins_sonarqube_project.git'
             }
         }
+
+        stage("Sonar-Qube")
+            steps{
+                withSonarQubeEnv('sonarqube-server') 
+                sh 'mvn clean package'
+            }
     }
 }
