@@ -13,20 +13,23 @@ pipeline {
         }
 
         stage('Build') {
-            if (params.BUILD_PYTHON == 'Yes') 
             steps {
+            script{
+            if (params.BUILD_PYTHON == 'Yes') 
                 sh "python3 code.py ${params.BUILD_TYPE}"
             }
             else {
                 echo "This stage is skipped"
+            }
             }
 
 
         }
 
         stage('SonarQube analysis') {
-            if (params.RUN_SONARQUBE == 'Yes' )
             steps {
+                script{
+                    if (params.RUN_SONARQUBE == 'Yes' )
                 withSonarQubeEnv('sonarqube_token') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
@@ -39,7 +42,7 @@ pipeline {
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
             }
-
+            }
             else{
                 echo "Stage is skipped"
             }
