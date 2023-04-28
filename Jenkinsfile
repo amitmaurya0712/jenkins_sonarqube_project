@@ -8,15 +8,16 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                def scannerHome = tool 'sonarqube';
-                withSonarQubeEnv('sonarqube_token') {
-                    sh 'sonar-scanner \
+                withSonarQubeEnv('sonarqube') {
+                    sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
+                        -Dsonar.login=admin \
+                        -Dsonar.password=maurya@123 \
                         -Dsonar.projectKey=python-project \
-                        -Dsonar.projectName=python \
+                        -Dsonar.projectName=python-project \
+                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/ \
                         -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=src \
-                        -Dsonar.host.url=http://35.88.207.97:9000/ \
-                        -Dsonar.login=sqa_7efe3b1b2adb0cc627236ab7f6a57eedd478237f'
+                        -Dsonar.sources=code \
+                        -Dsonar.host.url=http://35.92.189.3:9000/ \ '
                 }
             }
         }
