@@ -2,6 +2,8 @@ pipeline {
     agent any
     parameters {
         choice(name: 'BUILD_TYPE', choices: ['Yes', 'No'], description: 'Select the build type')
+        choice(name: 'BUILD_PYTHON', choices: ['Yes', 'No'], description: 'Do you want to build the Python code?')
+        choice(name: 'RUN_SONARQUBE', choices: ['Yes', 'No'], description: 'Do you want to run the SonarQube analysis?')
          }
     stages {
         stage('Checkout') {
@@ -11,12 +13,18 @@ pipeline {
         }
 
         stage('Build') {
+            when {
+               expression { params.BUILD_PYTHON == 'Yes' }
+             }
             steps {
                 sh "python3 code.py ${params.BUILD_TYPE}"
             }
         }
 
         stage('SonarQube analysis') {
+            when {
+              expression { params.RUN_SONARQUBE == 'Yes' }
+             }
             steps {
                 withSonarQubeEnv('sonarqube_token') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
