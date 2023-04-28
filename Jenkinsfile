@@ -30,7 +30,7 @@ pipeline {
             steps {
             script{
             if (params.RUN_SONARQUBE == 'Yes' ) 
-                   {
+            {
                     withSonarQubeEnv('sonarqube_token') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
