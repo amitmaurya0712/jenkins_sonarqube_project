@@ -26,7 +26,6 @@ pipeline {
 
         stage('SonarQube analysis') {
             if (params.RUN_SONARQUBE == 'Yes' )
-             }
             steps {
                 withSonarQubeEnv('sonarqube_token') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
