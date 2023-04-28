@@ -8,7 +8,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
+                withSonarQubeEnv('sonarqube_token') {
                     sh 'sonar-scanner \
                         -Dsonar.projectKey=python-project \
                         -Dsonar.projectName=python \
