@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'python3 code.py ${params.BUILD_TYPE}'
+                sh "python code.py ${params.BUILD_TYPE}"
             }
         }
 
