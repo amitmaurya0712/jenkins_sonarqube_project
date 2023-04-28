@@ -16,32 +16,36 @@ pipeline {
             steps {
             script{
             if (params.BUILD_PYTHON == 'Yes') 
+            {
                 sh "python3 code.py ${params.BUILD_TYPE}"
             } else {
                 echo "This stage is skipped"
-             }
             }
-        }  
 
-        stage('SonarQube analysis') {
-            steps {
-                script{
-                    if (params.RUN_SONARQUBE == 'Yes' )
-                withSonarQubeEnv('sonarqube_token') {
-                    sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
-                        -Dsonar.login=admin \
-                        -Dsonar.password=maurya@123 \
-                        -Dsonar.projectKey=python-sonarqube-checkwithparameters \
-                        -Dsonar.projectName=python-sonarqube-checkwithparameters  \
-                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/SonarQube_pipeline \
-                        -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=. '
-                        // -Dsonar.host.url=http://35.92.189.3:9000/ 
-                }
-            }
-            } else{
-                echo "Stage is skipped"
             }
         }
-    }
-}
+        }  
+
+//         stage('SonarQube analysis') {
+//             steps {
+//                 script{
+//                    if (params.RUN_SONARQUBE == 'Yes' ) 
+//                    {
+//                     withSonarQubeEnv('sonarqube_token') {
+//                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
+//                         -Dsonar.login=admin \
+//                         -Dsonar.password=maurya@123 \
+//                         -Dsonar.projectKey=python-sonarqube-checkwithparameters \
+//                         -Dsonar.projectName=python-sonarqube-checkwithparameters  \
+//                         -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/SonarQube_pipeline \
+//                         -Dsonar.projectVersion=1.0 \
+//                         -Dsonar.sources=. '
+//                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
+//                 }    
+//             }
+//             } else{
+//                 echo "Stage is skipped"
+//             }
+//         }
+//         }
+// }
