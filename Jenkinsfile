@@ -28,8 +28,8 @@ pipeline {
 
         stage('SonarQube analysis') {
             steps {
-                script{
-                   if (params.RUN_SONARQUBE == 'Yes' ) 
+            script{
+            if (params.RUN_SONARQUBE == 'Yes' ) 
                    {
                     withSonarQubeEnv('sonarqube_token') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
@@ -43,7 +43,7 @@ pipeline {
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }    
             }
-            } else{
+            } else {
                 echo "Stage is skipped"
             }
         }
