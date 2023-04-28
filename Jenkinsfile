@@ -4,7 +4,7 @@ pipeline {
         choice(name: 'BUILD_TYPE', choices: ['Yes', 'No'], description: 'Select the build type')
         choice(name: 'BUILD_PYTHON', choices: ['Yes', 'No'], description: 'Do you want to build the Python code?')
         choice(name: 'RUN_SONARQUBE', choices: ['Yes', 'No'], description: 'Do you want to run the SonarQube analysis?')
-         }
+        }
     stages {
         stage('Checkout') {
             steps {
@@ -13,17 +13,19 @@ pipeline {
         }
 
         stage('Build') {
-            when {
-               expression { params.BUILD_PYTHON == 'Yes' }
-             }
+            if (params.BUILD_PYTHON == 'Yes') 
             steps {
                 sh "python3 code.py ${params.BUILD_TYPE}"
             }
+            else {
+                echo "This stage is skipped"
+            }
+
+
         }
 
         stage('SonarQube analysis') {
-            when {
-              expression { params.RUN_SONARQUBE == 'Yes' }
+            if (params.RUN_SONARQUBE == 'Yes' )
              }
             steps {
                 withSonarQubeEnv('sonarqube_token') {
@@ -37,6 +39,10 @@ pipeline {
                         -Dsonar.sources=. '
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
+            }
+
+            else{
+                echo "Stage is skipped"
             }
         }
     }
