@@ -37,7 +37,7 @@ pipeline {
                         -Dsonar.password=maurya@123 \
                         -Dsonar.projectKey=python-sonarqube-checkwithparameters \
                         -Dsonar.projectName=python-sonarqube-checkwithparameters  \
-                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/SonarQube_pipeline \
+                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/sonar_checker \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=. '
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
