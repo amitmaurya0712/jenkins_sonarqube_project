@@ -18,7 +18,7 @@ pipeline {
             if (params.BUILD_PYTHON == 'Yes') 
                 sh "python3 code.py ${params.BUILD_TYPE}"
             }
-              else {
+            else {
                 echo "This stage is skipped"
             }
             }
