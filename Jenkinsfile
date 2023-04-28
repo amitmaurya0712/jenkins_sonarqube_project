@@ -32,8 +32,8 @@ pipeline {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
                         -Dsonar.password=maurya@123 \
-                        -Dsonar.projectKey=python-sonarqube-check \
-                        -Dsonar.projectName=python-sonarqube-check  \
+                        -Dsonar.projectKey=python-sonarqube-checkwithparameters \
+                        -Dsonar.projectName=python-sonarqube-checkwithparameters  \
                         -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/SonarQube_pipeline \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=. '
