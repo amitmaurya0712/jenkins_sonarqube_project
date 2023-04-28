@@ -8,6 +8,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
+                def scannerHome = tool 'sonarqube';
                 withSonarQubeEnv('sonarqube') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
