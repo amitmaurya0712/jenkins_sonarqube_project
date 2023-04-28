@@ -8,6 +8,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
+                def scannerHome = tool 'sonarqube';
                 withSonarQubeEnv('sonarqube_token') {
                     sh 'sonar-scanner \
                         -Dsonar.projectKey=python-project \
