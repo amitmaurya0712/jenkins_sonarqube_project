@@ -8,7 +8,6 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
                 withSonarQubeEnv('sonarqube') {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
@@ -17,7 +16,7 @@ pipeline {
                         -Dsonar.projectName=python-project \
                         -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/ \
                         -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=. '
+                        -Dsonar.sources=.'
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
             }
