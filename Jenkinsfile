@@ -12,11 +12,11 @@ pipeline {
                     sh '/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube/bin/sonar-scanner \
                         -Dsonar.login=admin \
                         -Dsonar.password=maurya@123 \
-                        -Dsonar.projectKey=python-project-sonar-pipeline \
-                        -Dsonar.projectName=python-project-sonar-pipeline \
-                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/ \
+                        -Dsonar.projectKey=python-sonarqube-check \
+                        -Dsonar.projectName=python-sonarqube-check  \
+                        -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/SonarQube_pipeline \
                         -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=.'
+                        -Dsonar.sources=. '
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
             }
