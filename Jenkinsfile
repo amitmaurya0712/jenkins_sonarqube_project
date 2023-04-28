@@ -6,6 +6,14 @@ pipeline {
                  git branch: 'main', credentialsId: '2f7e6287-0597-44f3-96ee-7118f14d623c', url: 'https://github.com/amitmaurya0712/jenkins_sonarqube_project.git'
             }
         }
+
+        stage('Build') {
+            steps {
+                sh 'python3 code.py'
+            }
+        }
+
+
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarqube_token') {
