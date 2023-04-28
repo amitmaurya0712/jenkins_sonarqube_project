@@ -1,9 +1,9 @@
 pipeline {
     agent any
+    stages {
         parameters {
             choice(name: 'BUILD_TYPE', choices: ['Yes', 'No'], description: 'Select the build type')
          }
-    stages {
         stage('Checkout') {
             steps {
                  git branch: 'main', credentialsId: '2f7e6287-0597-44f3-96ee-7118f14d623c', url: 'https://github.com/amitmaurya0712/jenkins_sonarqube_project.git'
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'python code.py ${params.BUILD_TYPE}'
+                sh 'python3 code.py ${params.BUILD_TYPE}'
             }
         }
 
