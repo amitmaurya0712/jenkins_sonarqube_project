@@ -14,7 +14,7 @@ pipeline {
                         -Dsonar.projectName=python \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=src \
-                        -Dsonar.host.url=http://35.92.189.3:9000/ \
+                        -Dsonar.host.url=http://35.88.207.97:9000/ \
                         -Dsonar.login=sqa_7efe3b1b2adb0cc627236ab7f6a57eedd478237f'
                 }
             }
