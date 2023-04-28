@@ -17,10 +17,9 @@ pipeline {
             script{
             if (params.BUILD_PYTHON == 'Yes') 
                 sh "python3 code.py ${params.BUILD_TYPE}"
-            }
-            else {
+            } else {
                 echo "This stage is skipped"
-            }
+             }
             }
         }  
 
@@ -40,8 +39,7 @@ pipeline {
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
             }
-            }
-            else{
+            } else{
                 echo "Stage is skipped"
             }
         }
