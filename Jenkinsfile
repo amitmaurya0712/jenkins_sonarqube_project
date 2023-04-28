@@ -16,8 +16,8 @@ pipeline {
                         -Dsonar.projectName=python-project \
                         -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/ \
                         -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=code \
-                        -Dsonar.host.url=http://35.92.189.3:9000/ \ '
+                        -Dsonar.sources=code \ '
+                        // -Dsonar.host.url=http://35.92.189.3:9000/ 
                 }
             }
         }
