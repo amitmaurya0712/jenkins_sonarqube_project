@@ -41,8 +41,8 @@ pipeline {
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=. '
                         // -Dsonar.host.url=http://35.92.189.3:9000/ 
-                }    
-            }
+                    }    
+            
             } else {
                 echo "Stage is skipped"
             }
